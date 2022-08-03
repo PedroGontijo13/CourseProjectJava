@@ -2,7 +2,7 @@ package ca.cicc.courseproject.Main.Problem1;
 
 import java.util.Arrays;
 
-public class valley implements place{
+public class valley extends places{
     /*Find the valley or the peak's of a array
         @param n[] -> array that contains a list of integers
         @param nSize -> number that represents the size of the array

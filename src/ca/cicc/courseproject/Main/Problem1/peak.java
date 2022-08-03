@@ -2,7 +2,7 @@ package ca.cicc.courseproject.Main.Problem1;
 
 import java.util.Arrays;
 
-public class peak implements place{
+public class peak extends places{
     /*Find the peak or the peak's of a array and create a new array with them
         @param n[] -> array that contains a list of integers
         @param nSize -> number that represents the size of the array
