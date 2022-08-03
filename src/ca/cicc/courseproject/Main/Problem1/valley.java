@@ -2,8 +2,8 @@ package ca.cicc.courseproject.Main.Problem1;
 
 import java.util.Arrays;
 
-public class peak implements place{
-    /*Find the peak or the peak's of a array and create a new array with them
+public class valley implements place{
+    /*Find the valley or the peak's of a array
         @param n[] -> array that contains a list of integers
         @param nSize -> number that represents the size of the array
      */
@@ -16,11 +16,15 @@ public class peak implements place{
             newN[0] = n[0];
             return newN;
         } else {
-            for(int i = 1; i < nSize; i++) {
-                if(n[i] >= n[i - 1] && n[i] >= n[i + 1]) {
-                    newN[controller] = n[i];
-                    controller++;
+            try {
+                for(int i = 1; i < nSize; i++) {
+                    if(n[i] < n[i - 1] && n[i] != n[i - 1]) {
+                        newN[controller] = n[i];
+                        controller++;
+                    }
                 }
+            } catch (Exception e) {
+                System.out.println("Exception Error!");
             }
         }
         return newN;
@@ -29,13 +33,10 @@ public class peak implements place{
         @param n[] -> array that contains a list of integers
      */
     @Override
-    public int CastelsNumbers(int n[]) {
-        int result = 1;
-
-        //See all elements of array
+    public int CastelsNumbers(int[] n) {
+        int result = 0;
         for(int i = 0; i < n.length; i++) {
-            //Check if the element of array is the same and check if its diferent than zero
-            if(n[i] != 0 && n[i] != n[result + 1]) {
+            if(n[i] != 0) {
                 result++;
             }
         }
@@ -44,7 +45,7 @@ public class peak implements place{
 
     public void Test() {
         //int[] n = new int[]{2,5,7,8,6,7,5};
-        int[] n = new int[]{2,6,6,6,3,7,5,8,9,8};
+        int[] n = new int[]{2,6,6,6,3};
         System.out.println(Arrays.toString((findNumbers(n, n.length))));
         int[] n2 = findNumbers(n, n.length);
         System.out.println("In this array we can construct " + CastelsNumbers(n2) + " castels");
