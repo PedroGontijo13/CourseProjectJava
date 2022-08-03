@@ -4,6 +4,11 @@ public class places implements place{
     public int[] n;
     public int nCastles;
 
+    places(int[] nV, int n1Castels) {
+        this.n = nV;
+        this.nCastles = n1Castels;
+    }
+
     @Override
     public int[] findNumbers(int[] n, int nSize) {
         return new int[0];

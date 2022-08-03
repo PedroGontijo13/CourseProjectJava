@@ -3,10 +3,18 @@ package ca.cicc.courseproject.Main.Problem1;
 import java.util.Arrays;
 
 public class peak extends places{
+    peak(int[] nV, int n1Castels) {
+        super(nV, n1Castels);
+    }
+
+    public void setCastels(int nCastels) {
+        this.nCastles = nCastels;
+    }
+
     /*Find the peak or the peak's of a array and create a new array with them
-        @param n[] -> array that contains a list of integers
-        @param nSize -> number that represents the size of the array
-     */
+            @param n[] -> array that contains a list of integers
+            @param nSize -> number that represents the size of the array
+         */
     @Override
     public int[] findNumbers(int[] n, int nSize) {
         int controller = 0;
@@ -44,9 +52,9 @@ public class peak extends places{
 
     public void Test() {
         //int[] n = new int[]{2,5,7,8,6,7,5};
-        int[] n = new int[]{2,6,6,6,3,7,5,8,9,8};
         System.out.println(Arrays.toString((findNumbers(n, n.length))));
         int[] n2 = findNumbers(n, n.length);
+        setCastels(CastelsNumbers(n2));
         System.out.println("In this array we can construct " + CastelsNumbers(n2) + " castels");
     }
 }

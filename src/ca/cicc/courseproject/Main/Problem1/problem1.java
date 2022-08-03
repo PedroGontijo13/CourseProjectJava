@@ -4,9 +4,7 @@ import java.util.Arrays;
 
 public class problem1 {
     public static void invoke() {
-        peak p = new peak();
-        p.Test();
-        valley v = new valley();
-        v.Test();
+        Test test = new Test();
+        test.Test();
     }
 }
