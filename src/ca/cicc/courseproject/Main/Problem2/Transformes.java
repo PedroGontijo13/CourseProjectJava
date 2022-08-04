@@ -27,6 +27,10 @@ public class Transformes {
         this.overallRating = getOverallRating();
     }
 
+    public Transformes() {
+
+    }
+
     //Calculate the overall rating
     public int getOverallRating() {
         return (this.Strength + this.Intelligence + this.Speed + this.Endurance + this.Firepower);
@@ -35,5 +39,24 @@ public class Transformes {
     //Set the overall rating
     public void setOverallRating() {
         this.overallRating = getOverallRating();
+    }
+
+    public String GetName() {
+        return this.name;
+    }
+
+    public String GetType() {
+        return this.Letter;
+    }
+
+    static class Deception extends Transformes {
+        Deception(String name, String Letter, int Strength, int Intelligence, int Speed, int Endurance, int Rank, int Courage, int Firepower, int Skill) {
+            super(name, Letter, Strength, Intelligence, Speed, Endurance, Rank, Courage, Firepower, Skill);
+        }
+    }
+    static class Autobot extends Transformes {
+        Autobot(String name, String Letter, int Strength, int Intelligence, int Speed, int Endurance, int Rank, int Courage, int Firepower, int Skill) {
+            super(name, Letter, Strength, Intelligence, Speed, Endurance, Rank, Courage, Firepower, Skill);
+        }
     }
 }
