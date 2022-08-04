@@ -8,6 +8,6 @@ public class CourseProjectDriver {
         //problem1 p1 = new problem1();
         //p1.invoke();
         problem2 p2 = new problem2();
-        p2.InputGroup();
+        p2.Menu();
     }
 }
