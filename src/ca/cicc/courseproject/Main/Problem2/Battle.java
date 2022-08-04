@@ -16,7 +16,13 @@ public class Battle {
     public void SeeListAutoBots() {
         System.out.println("Autobots: ");
         for(Transformes.Autobot a : alAuto) {
-            System.out.println(a);
+            System.out.println(a.GetName() + " " + a.GetType());
+        }
+    }
+    public void SeeListDecpitions() {
+        System.out.println("Decpitions: ");
+        for(Transformes.Deception a : al) {
+            System.out.println(a.GetName() + " " + a.GetType());
         }
     }
 }

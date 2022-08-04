@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class problem2 {
+    Battle battle = new Battle();
     public String[] SplitArray(String x) {
         //Remove the spaces from the array
         x = x.replace(" ", "");
@@ -16,15 +17,20 @@ public class problem2 {
         if(y[1] == "a" || y[1] == "A") {
             Transformes.Autobot autobot = new Transformes.Autobot(y[0], y[1], Integer.parseInt(y[2]), Integer.parseInt(y[3]), Integer.parseInt(y[4]), Integer.parseInt(y[5]), Integer.parseInt(y[6]), Integer.parseInt(y[7]), Integer.parseInt(y[8]), Integer.parseInt(y[9]));
             System.out.println(autobot.GetName() + " " + autobot.GetType());
+            battle.addIntoListAutobot(autobot);
             return autobot;
         } else {
             Transformes.Deception deception = new Transformes.Deception(y[0], y[1], Integer.parseInt(y[2]), Integer.parseInt(y[3]), Integer.parseInt(y[4]), Integer.parseInt(y[5]), Integer.parseInt(y[6]), Integer.parseInt(y[7]), Integer.parseInt(y[8]), Integer.parseInt(y[9]));
             System.out.println(deception.GetName() + " " + deception.GetType() + " created!");
+            battle.addIntoListDecption(deception);
             return deception;
         }
     }
-    public void DecptionList(Transformes.Deception deception) {
-
+    public void DecptionList() {
+        battle.SeeListDecpitions();
+    }
+    public void AutobotsList() {
+        battle.SeeListAutoBots();
     }
     public void InputGroupRobot() {
         try {
@@ -39,14 +45,21 @@ public class problem2 {
     }
 
     public void Menu() {
-        System.out.println("1 - Create a robot");
-        System.out.println("2 - go to battle");
-        System.out.println("3 - See robots");
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Chose option: ");
-        int option = scanner.nextInt();
-        if(option == 1) {
-            InputGroupRobot();
-        }
+        int option = 1;
+        do {
+            System.out.println("1 - Create a robot");
+            System.out.println("2 - go to battle");
+            System.out.println("3 - See robots");
+            System.out.println("0 - leave");
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Chose option: ");
+            option = scanner.nextInt();
+            if(option == 1) {
+                InputGroupRobot();
+            } else if(option == 3) {
+                DecptionList();
+                AutobotsList();
+            }
+        } while (option != 0);
     }
 }
