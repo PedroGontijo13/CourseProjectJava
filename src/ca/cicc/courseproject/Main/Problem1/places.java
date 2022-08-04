@@ -4,9 +4,9 @@ public class places implements place{
     public int[] n;
     public int nCastles;
 
-    places(int[] nV, int n1Castels) {
+    places(int[] nV, int n1Castles) {
         this.n = nV;
-        this.nCastles = n1Castels;
+        this.nCastles = n1Castles;
     }
 
     @Override
@@ -15,7 +15,7 @@ public class places implements place{
     }
 
     @Override
-    public int CastelsNumbers(int[] n) {
+    public int castlesNumbers(int[] n) {
         return 0;
     }
 }

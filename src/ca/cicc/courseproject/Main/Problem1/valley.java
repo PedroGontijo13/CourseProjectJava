@@ -7,41 +7,55 @@ public class valley extends places{
         super(nV, n1Castels);
     }
 
-    public void setCastels(int nCastels) {
-        this.nCastles = nCastels;
+    public int[] getArray() {
+        return this.n;
+    }
+
+    /*Set the number of castles of the class
+        @param nCastles -> number of castles
+     */
+    public void setCastles(int nCastles) {
+        this.nCastles = nCastles;
+    }
+
+    /*Verify if the number is the peak between 2 numbers
+       @param n -> first number
+       @param peak -> number to be checked
+       @param n2 -> next number
+    */
+    public boolean verifyValley(int n, int peak, int n2) {
+        if(peak < n && peak < n2) {
+            return true;
+        }
+        return false;
     }
 
     /*Find the valley or the peak's of a array
-            @param n[] -> array that contains a list of integers
-            @param nSize -> number that represents the size of the array
-         */
+        @param n[] -> array that contains a list of integers
+        @param nSize -> number that represents the size of the array
+     */
     @Override
     public int[] findNumbers(int[] n, int nSize) {
         int controller = 0;
         int[] newN = new int[nSize];
-        if(nSize == 1) {
-            //Return the first number if the array just have one integer
-            newN[0] = n[0];
-            return newN;
-        } else {
-            try {
-                for(int i = 1; i < nSize; i++) {
-                    if(n[i] < n[i - 1] && n[i] != n[i - 1]) {
-                        newN[controller] = n[i];
-                        controller++;
-                    }
+        for(int i = 0; i < nSize; i++) {
+            //Verify if we can already take the elements from array to dont do one exception
+            if(i > 0 && i <= nSize - 2) {
+                int temp = n[i - 1];
+                int temp2 = n[i + 1];
+                if (verifyValley(temp, n[i], temp2)) {
+                    newN[controller] = n[i];
+                    controller++;
                 }
-            } catch (Exception e) {
-                System.out.println("Exception Error!");
             }
         }
         return newN;
     }
-    /*Find the number of castels that can be construed
+    /*Find the number of castles that can be construed
         @param n[] -> array that contains a list of integers
      */
     @Override
-    public int CastelsNumbers(int[] n) {
+    public int castlesNumbers(int[] n) {
         int result = 0;
         for(int i = 0; i < n.length; i++) {
             if(n[i] != 0) {
@@ -52,11 +66,8 @@ public class valley extends places{
     }
 
     public void Test() {
-        //int[] n = new int[]{2,5,7,8,6,7,5};
-        int[] n = new int[]{2,6,6,6,3};
-        System.out.println(Arrays.toString((findNumbers(n, n.length))));
-        int[] n2 = findNumbers(n, n.length);
-        setCastels(CastelsNumbers(n2));
-        System.out.println("In this array we can construct " + CastelsNumbers(n2) + " castels");
+        int[] n2 = findNumbers(this.n, this.n.length);
+        setCastles(castlesNumbers(n2));
+        System.out.println("In this array we can construct " + castlesNumbers(n2) + " castles in the valley");
     }
 }
