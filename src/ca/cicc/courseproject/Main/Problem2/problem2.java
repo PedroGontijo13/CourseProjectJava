@@ -56,6 +56,13 @@ public class problem2 {
             option = scanner.nextInt();
             if(option == 1) {
                 InputGroupRobot();
+            } else if(option == 2) {
+                battle.CreateAllRobotsList();
+                int i = 0;
+                for(Transformes transformes: battle.alTransformes) {
+                    //battle.BattleTime();
+                    i++;
+                }
             } else if(option == 3) {
                 DecptionList();
                 AutobotsList();
