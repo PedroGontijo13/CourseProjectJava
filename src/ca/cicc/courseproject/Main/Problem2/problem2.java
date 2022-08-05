@@ -1,5 +1,7 @@
 package ca.cicc.courseproject.Main.Problem2;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -32,19 +34,31 @@ public class problem2 {
     public void AutobotsList() {
         battle.SeeListAutoBots();
     }
-    public void InputGroupRobot() {
+    public void InputGroupRobot(String s) {
         try {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Group of robots: ");
-            String x = scanner.nextLine();
-            String[] y = SplitArray(x);
-            createRobot(y);
+            String[] numbers = s.split("[*]");;
+            for(int i = 0; i < numbers.length; i++) {
+                String[] y = SplitArray(numbers[i]);
+                System.out.println(numbers[i]);
+                createRobot(y);
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+    public void ReadFile() throws FileNotFoundException {
+        File file = new File("C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\CourseProject\\src\\ca\\cicc\\courseproject\\Main\\Problem2\\transformers.txt");
+        Scanner scanner = new Scanner(file);
+        while(scanner.hasNext()) {
+            String s = scanner.nextLine();
+            System.out.println(s);
+            InputGroupRobot(s);
+        }
+    }
 
-    public void Menu() {
+    public void Menu() throws FileNotFoundException {
+        ReadFile();
+        /*
         int option = 1;
         do {
             System.out.println("1 - Create a robot");
@@ -67,6 +81,6 @@ public class problem2 {
                 DecptionList();
                 AutobotsList();
             }
-        } while (option != 0);
+        } while (option != 0); */
     }
 }
