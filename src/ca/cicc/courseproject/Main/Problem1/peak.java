@@ -57,11 +57,15 @@ public class peak extends places{
     @Override
     public int castlesNumbers(int n[]) {
         int result = 0;
-        //See all elements of array
-        for(int i = 0; i < n.length; i++) {
-            //Check if the element of array is the same and check if it's different from zero
-            if(n[i] != 0 && n[i] != n[i + 1]) {
-                result++;
+        if(n.length == 1) {
+            result++;
+        } else {
+            //See all elements of array
+            for(int i = 0; i < n.length; i++) {
+                //Check if the element of array is the same and check if it's different from zero
+                if(n[i] != 0 && n[i] != n[i + 1]) {
+                    result++;
+                }
             }
         }
         return result;
