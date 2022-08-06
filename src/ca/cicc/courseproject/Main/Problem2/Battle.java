@@ -104,15 +104,24 @@ public class Battle implements Rules{
         }
         return countBattles;
     }
-
     public String getTheWinnerTeamName(){
         if(winnerOfAutobots.size() > winnerOfDeceptions.size()) return "Autobots";
         else return "Deceptions";
     }
 
+    public String getTheloserTeamName(){
+        if(winnerOfAutobots.size() > winnerOfDeceptions.size()) return "Deceptions";
+        else return "Autobots";
+    }
+
     public ArrayList<Transformer> getTheWinnerTeamList(){
         if(winnerOfAutobots.size() > winnerOfDeceptions.size()) return winnerOfAutobots;
         else return winnerOfDeceptions;
+    }
+
+    public ArrayList<Transformer> getTheSurvivingMemberList(){
+        if(winnerOfAutobots.size() > winnerOfDeceptions.size()) return winnerOfDeceptions;
+        else return winnerOfAutobots;
     }
 
     public ArrayList<Transformer> getWinnerOfAutobots() {
