@@ -58,5 +58,6 @@ public class Transformes {
         Autobot(String name, String Letter, int Strength, int Intelligence, int Speed, int Endurance, int Rank, int Courage, int Firepower, int Skill) {
             super(name, Letter, Strength, Intelligence, Speed, Endurance, Rank, Courage, Firepower, Skill);
         }
+        
     }
 }
