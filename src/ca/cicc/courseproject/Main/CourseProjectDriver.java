@@ -7,8 +7,8 @@ import java.io.FileNotFoundException;
 
 public class CourseProjectDriver {
     public static void main(String[] args) throws FileNotFoundException {
-        //problem1 p1 = new problem1();
-        //p1.invoke();
+        problem1 p1 = new problem1();
+        p1.invoke();
         TestProblem2 t = new TestProblem2();
         t.test();
     }

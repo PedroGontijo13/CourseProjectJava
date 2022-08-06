@@ -3,15 +3,10 @@ package ca.cicc.courseproject.Main.Problem2;
 import java.util.ArrayList;
 
 public class Battle implements Rules{
-
-    //private Transformer autobot;
-    //private Transformer deception;
     private ArrayList<Transformer> winnerOfAutobots;
     private ArrayList<Transformer> winnerOfDeceptions;
 
     public Battle() {
-        //this.autobot = autobot;
-        //this.deception = deception;
         this.winnerOfAutobots = new ArrayList<Transformer>();
         this.winnerOfDeceptions = new ArrayList<Transformer>();
     }
@@ -76,7 +71,7 @@ public class Battle implements Rules{
         if(autobots.size() >= deceptions.size()) tempBattles = deceptions.size();
         else tempBattles = autobots.size();
 
-        int countBattles = 0;
+        int countBattles = 1;
 
         for(int i = 0; i < tempBattles; i++){
             Transformer autobot = autobots.get(i);

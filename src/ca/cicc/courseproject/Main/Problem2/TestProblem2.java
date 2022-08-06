@@ -20,7 +20,6 @@ public class TestProblem2 {
             String[] numbers = s.split("[*]");;
             for(int i = 0; i < numbers.length; i++) {
                 String[] y = SplitArray(numbers[i]);
-                System.out.println(numbers[i]);
                 createRobot(y);
             }
         } catch (Exception e) {
@@ -32,7 +31,6 @@ public class TestProblem2 {
     public static Object createRobot(String[] y) {
         if(y[1] == "a" || y[1] == "A") {
             Transformer autobot = new Transformer(y[0], y[1], Integer.parseInt(y[2]), Integer.parseInt(y[3]), Integer.parseInt(y[4]), Integer.parseInt(y[5]), Integer.parseInt(y[6]), Integer.parseInt(y[7]), Integer.parseInt(y[8]), Integer.parseInt(y[9]));
-            System.out.println(autobot.getNameOfRobot() + " " + autobot.getTeam());
             judge.addIntoListAutobot(autobot);
             return autobot;
         } else {
@@ -48,7 +46,6 @@ public class TestProblem2 {
         Scanner scanner = new Scanner(file);
         while(scanner.hasNext()) {
             String s = scanner.nextLine();
-            System.out.println(s);
             InputGroupRobot(s);
         }
     }
