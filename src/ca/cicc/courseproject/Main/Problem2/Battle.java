@@ -2,44 +2,125 @@ package ca.cicc.courseproject.Main.Problem2;
 
 import java.util.ArrayList;
 
-public class Battle {
-    ArrayList<Transformes.Deception> al = new ArrayList<>();
-    ArrayList<Transformes.Autobot> alAuto = new ArrayList<>();
+public class Battle implements Rules{
 
-    ArrayList<Transformes> alTransformes = new ArrayList<>();
+    //private Transformer autobot;
+    //private Transformer deception;
+    private ArrayList<Transformer> winnerOfAutobots;
+    private ArrayList<Transformer> winnerOfDeceptions;
 
-    public void addIntoListDecption(Transformes.Deception deception) {
-        al.add(deception);
-    }
-    public void addIntoListAutobot(Transformes.Autobot autobot) {
-        alAuto.add(autobot);
-    }
-
-    public void CreateAllRobotsList() {
-        alTransformes.addAll(al);
-        alTransformes.addAll(alAuto);
+    public Battle() {
+        //this.autobot = autobot;
+        //this.deception = deception;
+        this.winnerOfAutobots = new ArrayList<Transformer>();
+        this.winnerOfDeceptions = new ArrayList<Transformer>();
     }
 
-    public void SeeListAutoBots() {
-        System.out.println("Autobots: ");
-        for(Transformes.Autobot a : alAuto) {
-            System.out.println(a.GetName() + " " + a.GetType());
-        }
-    }
-    public void SeeListDecpitions() {
-        System.out.println("Decpitions: ");
-        for(Transformes.Deception a : al) {
-            System.out.println(a.GetName() + " " + a.GetType());
+    @Override
+    public int compareToCourageAndStrength(Transformer autobot, Transformer deception){
+        if(autobot.getCourage() - deception.getCourage() >= 4 && autobot.getStrength() - deception.getStrength() >= 3){
+            winnerOfAutobots.add(autobot);
+            return 1;
+        } else if(deception.getCourage() - autobot.getCourage() >= 4 && deception.getStrength() - autobot.getStrength() >= 3){
+            winnerOfDeceptions.add(deception);
+            return 1;
+        } else{
+            return 0;
         }
     }
 
-    public void BattleTime(Transformes.Deception deception, Transformes.Autobot autobot) {
-        if(deception.getOverallRating() > autobot.getOverallRating()) {
-            System.out.println(deception.GetName() + "win");
-        } else if (deception.getOverallRating() < autobot.getOverallRating()) {
-            System.out.println(autobot.GetName() + "win");
-        } else {
-            System.out.println("Nobody win");
+    @Override
+    public int compareToSkill(Transformer autobot, Transformer deception){
+        if(autobot.getSkill() - deception.getSkill() >= 3){
+            winnerOfAutobots.add(autobot);
+            return 1;
+        } else if(deception.getSkill() - autobot.getSkill() >= 3){
+            winnerOfDeceptions.add(deception);
+            return 1;
+        } else{
+            return 0;
         }
+    }
+
+    @Override
+    public int compareToOverAllRating(Transformer autobot, Transformer deception){
+        if(autobot.getOverAllRating() > deception.getOverAllRating()){
+            winnerOfAutobots.add(autobot);
+            return 1;
+        } else if(deception.getOverAllRating() > autobot.getOverAllRating()){
+            winnerOfDeceptions.add(deception);
+            return 1;
+        } else{
+            return 0;
+        }
+    }
+
+    @Override
+    public int specialRules(Transformer autobot, Transformer deception){
+        if((autobot.getNameOfRobot() == "Optimus Prime" && deception.getNameOfRobot() == "Optimus Prime") || (autobot.getNameOfRobot() == "Optimus Prime" && deception.getNameOfRobot() == "Predaking") || (autobot.getNameOfRobot() == "Predaking" && deception.getNameOfRobot() == "Optimus Prime") || (autobot.getNameOfRobot() == "Predaking" && deception.getNameOfRobot() == "Predaking")){
+            return 2;
+        } else if(autobot.getNameOfRobot() == "Optimus Prime" || autobot.getNameOfRobot() == "Predaking"){
+            winnerOfAutobots.add(autobot);
+            return 1;
+        } else if(deception.getNameOfRobot() == "Optimus Prime" || deception.getNameOfRobot() == "Predaking"){
+            winnerOfDeceptions.add(deception);
+            return 1;
+        } else{
+            return 0;
+        }
+    }
+
+    public int goToBattleAndCountBattles(ArrayList<Transformer> autobots, ArrayList<Transformer> deceptions){
+        int tempBattles = 0;
+
+        if(autobots.size() >= deceptions.size()) tempBattles = deceptions.size();
+        else tempBattles = autobots.size();
+
+        int countBattles = 0;
+
+        for(int i = 0; i < tempBattles; i++){
+            Transformer autobot = autobots.get(i);
+            Transformer deception = deceptions.get(i);
+
+            if(this.specialRules(autobot, deception) == 2){
+                countBattles += 1;
+                break;
+            } else if(this.specialRules(autobot, deception) == 1){
+                countBattles += 1;
+                //continue;
+            } else if(this.compareToCourageAndStrength(autobot, deception) == 1){
+                countBattles += 1;
+                //continue;
+            } else if(this.compareToSkill(autobot, deception) == 1){
+                countBattles += 1;
+                //continue;
+            } else if(this.compareToOverAllRating(autobot, deception) == 1){
+                countBattles += 1;
+                //continue;
+            } else{
+                countBattles += 1;
+                //continue;
+            }
+        }
+        return countBattles;
+    }
+
+    public String getTheWinnerTeamName(){
+        if(winnerOfAutobots.size() > winnerOfDeceptions.size()) return "Autobots";
+        else return "Deceptions";
+    }
+
+    public ArrayList<Transformer> getTheWinnerTeamList(){
+        if(winnerOfAutobots.size() > winnerOfDeceptions.size()) return winnerOfAutobots;
+        else return winnerOfDeceptions;
+    }
+
+    public ArrayList<Transformer> getWinnerOfAutobots() {
+        return winnerOfAutobots;
+    }
+
+    public ArrayList<Transformer> getWinnerOfDeceptions() {
+        return winnerOfDeceptions;
     }
 }
+
