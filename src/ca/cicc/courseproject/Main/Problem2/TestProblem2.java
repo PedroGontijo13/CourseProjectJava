@@ -15,9 +15,13 @@ public class TestProblem2 {
         String[] y = x.split(",");
         return y;
     }
+
+    /* Separate the string to identify and take the information's about the specific robot
+        @param s -> Represent the line from the file with the robot information
+     */
     public static void InputGroupRobot(String s) {
         try {
-            String[] numbers = s.split("[*]");;
+            String[] numbers = s.split("[*]");
             for(int i = 0; i < numbers.length; i++) {
                 String[] y = SplitArray(numbers[i]);
                 createRobot(y);
@@ -41,6 +45,7 @@ public class TestProblem2 {
         }
     }
 
+    // Read the file and take the information's about the robot to pass to the function "InputGroupRobot"
     public static void ReadFile() throws FileNotFoundException {
         File file = new File("C:\\Users\\pedro\\Desktop\\CourseProjectJava-master\\CourseProjectJava-master\\wmad202-courseProject2\\src\\ca\\ciccc\\wmad\\project2\\problem2\\transformers.txt");
         Scanner scanner = new Scanner(file);
@@ -50,6 +55,7 @@ public class TestProblem2 {
         }
     }
 
+    //Test the function calling the functions
     public static void test() throws FileNotFoundException {
         ReadFile();
         judge.printInformationOfResult();

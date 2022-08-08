@@ -65,9 +65,9 @@ public class Battle implements Rules{
         }
     }
 
-    public int goToBattleAndCountBattles(ArrayList<Transformer> autobots, ArrayList<Transformer> deceptions){
-        int tempBattles = 0;
+    static int tempBattles = 0;
 
+    public int goToBattleAndCountBattles(ArrayList<Transformer> autobots, ArrayList<Transformer> deceptions){
         if(autobots.size() >= deceptions.size()) tempBattles = deceptions.size();
         else tempBattles = autobots.size();
 
